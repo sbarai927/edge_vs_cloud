@@ -94,19 +94,27 @@ WSGI_APPLICATION = 'orchid_hr.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
  #    'default': {
  #       'ENGINE': 'django.db.backends.sqlite3',
   #      'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
  #   }
 #}
 
+# DATABASES = {
+#    'default': dj_database_url.parse(
+#        'postgresql://postgres:nzfZjQcamjgdTeROtMUsTReLmILZcvpY@gondola.proxy.rlwy.net:55555/railway',
+#        conn_max_age=600,
+#        conn_health_checks=True,
+# )
+# }
+
 DATABASES = {
-    'default': dj_database_url.parse(
-        'postgresql://postgres:nzfZjQcamjgdTeROtMUsTReLmILZcvpY@gondola.proxy.rlwy.net:55555/railway',
-        conn_max_age=600,
-        conn_health_checks=True,
-)
+  "default": dj_database_url.config(
+    default=os.getenv("DATABASE_URL"),
+    conn_max_age=600,
+    ssl_require=False
+  )
 }
 
 # Password validation
