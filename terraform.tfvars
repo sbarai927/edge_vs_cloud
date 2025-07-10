@@ -1,0 +1,7 @@
+aws_region        = "eu-central-1"
+app_name          = "hr-management"
+db_username       = "hr_admin"
+db_name           = "your_db_name"
+db_password       = "123456789"
+instance_type     = "t3.micro"
+django_secret_key = "your-very-secret-key"
